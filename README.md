@@ -28,18 +28,13 @@ soon).
 
 **Documentation**
 
-Do the following to generate HTML documentation for this project:
+Download [htmlTools][2], which will be used to generate HTML documentation for
+this project. Add it to your search path in Matlab. Run the file
+CodeDescriptions.m in the ptbTools directory. This will generate in a new
+directory (Documentation) with HTML documentation for all functions. Brief
+descriptions of all functions can be found in TABLE\_OF\_CONTENTS.html.
 
--   Download the [htmlTools][2] toolbox and add it to your search path in Matlab
-
-    [2]: <https://github.com/michaelfbonner/htmlTools>
-
--   Run the CodeDescriptions.m in the ptbTools directory to generate HTML
-    documentation for this project
-
-This will generate HTML documentation for all functions in a new directory
-titled Documentation. Brief descriptions of all functions can be found in the
-TABLE\_OF\_CONTENTS.html document.
+[2]: <https://github.com/michaelfbonner/htmlTools>
 
  
 
