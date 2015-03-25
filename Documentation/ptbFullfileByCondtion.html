@@ -1,0 +1,227 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>ptbFullfileByCondtion</title><meta name="generator" content="MATLAB 8.5"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2015-03-25"><meta name="DC.source" content="ptbFullfileByCondtion.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>ptbFullfileByCondtion</h1><!--introduction--><p>Create full filepath for a stimulus dependent on condition</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Example</a></li><li><a href="#4">See also</a></li><li><a href="#5">Function</a></li><li><a href="#7">Assign variables</a></li><li><a href="#8">Create full filepath for stimulus</a></li></ul></div><h2>Syntax<a name="1"></a></h2><p>thisStimulusFullFile = ptbFullfileByCondtion(FullfileParameters)</p><h2>Description<a name="2"></a></h2><p>ptbFullfileByCondtion creates a full filepath for the stimulus file based on its condition label</p><div><ul><li>subjectNumber  - subject number</li><li>runNumber  - run number</li></ul></div><h2>Example<a name="3"></a></h2><pre>StimulusDirectories.StartUp.conditions = {'startUp'};
+StimulusDirectories.StartUp.directory = directoryStartUp;
+StimulusDirectories.Experimental.conditions = {'pathways', 'targetCarryover', 'fillerCarryover', 'nullCarryover'};
+StimulusDirectories.Experimental.directory = directoryExperimental;
+StimulusDirectories.Target.conditions = {'target'};
+StimulusDirectories.Target.directory = directoryTarget;
+StimulusDirectories.Filler.conditions = {'filler'};
+StimulusDirectories.Filler.directory = directoryFiller;
+StimulusDirectories.Null.conditions = {'null'};
+StimulusDirectories.Null.directory = [];
+StimulusDirectories.WrapUp.conditions = {'wrapUp'};
+StimulusDirectories.WrapUp.directory = [];</pre><pre>FullfileParameters.StimulusDirectories = StimulusDirectories;
+FullfileParameters.thisCondition = thisCondition;
+FullfileParameters.thisStimulusFile = thisStimulusFile;</pre><pre>thisStimulusFullFile = ptbFullfileByCondtion(FullfileParameters);</pre><h2>See also<a name="4"></a></h2><div><ul><li>ptbBufferImageAndCrosshairAndWaitForT</li></ul></div><p>Michael F. Bonner | University of Pennsylvania | <a href="http://www.michaelfbonner.com">http://www.michaelfbonner.com</a></p><h2>Function<a name="5"></a></h2><pre class="codeinput"><span class="keyword">function</span> thisStimulusFullFile = ptbFullfileByCondtion(FullfileParameters)
+</pre><h2>Assign variables<a name="7"></a></h2><pre class="codeinput"><span class="comment">% Stimulus information</span>
+thisCondition = FullfileParameters.thisCondition;
+thisStimulusFile = FullfileParameters.thisStimulusFile;
+
+<span class="comment">% Directories</span>
+StimulusDirectories = FullfileParameters.StimulusDirectories;
+stimulusSets = fieldnames(StimulusDirectories);
+nStimulusSets = length(stimulusSets);
+</pre><h2>Create full filepath for stimulus<a name="8"></a></h2><pre class="codeinput"><span class="comment">% Assign directory based on condition</span>
+thisStimulusFullFile = [];
+<span class="keyword">for</span> iStimulusSets = 1 : nStimulusSets
+
+    <span class="comment">% Stimulus set</span>
+    thisStimulusSet = stimulusSets{iStimulusSets};
+
+    <span class="comment">% Conditions associated with this stimulus directory</span>
+    theseConditions = StimulusDirectories.(thisStimulusSet).conditions;
+
+    <span class="comment">% Create fullfile based on stimulus condition</span>
+    isCondition = ismember(theseConditions, thisCondition);
+    <span class="keyword">if</span> any(isCondition)
+        thisDirectory = StimulusDirectories.(thisStimulusSet).directory;
+
+        <span class="comment">% If the directory is empty return 'null', otherwise return the</span>
+        <span class="comment">% full filepath</span>
+        <span class="keyword">if</span> isempty(thisDirectory)
+            thisStimulusFullFile = <span class="string">'null'</span>;
+        <span class="keyword">else</span>
+            thisStimulusFullFile = fullfile(thisDirectory, thisStimulusFile);
+        <span class="keyword">end</span>
+
+    <span class="keyword">end</span>
+
+<span class="keyword">end</span>
+
+<span class="comment">% Error checking</span>
+<span class="keyword">if</span> isempty(thisStimulusFullFile)
+    error(<span class="string">'thisCondition not recognized'</span>)
+<span class="keyword">end</span>
+</pre><pre class="codeinput"><span class="keyword">end</span>  <span class="comment">% function thisStimulusFullFile = ptbFullfileByCondtion(StimulusDirectories)</span>
+</pre><p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2015a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% ptbFullfileByCondtion
+%
+% Create full filepath for a stimulus dependent on condition
+% 
+%% Syntax
+% 
+% thisStimulusFullFile = ptbFullfileByCondtion(FullfileParameters)
+% 
+%% Description
+% 
+% ptbFullfileByCondtion creates a full filepath for the stimulus file based
+% on its condition label
+% 
+% * subjectNumber  - subject number
+% * runNumber  - run number
+% 
+% 
+%% Example
+% 
+%  StimulusDirectories.StartUp.conditions = {'startUp'};
+%  StimulusDirectories.StartUp.directory = directoryStartUp;
+%  StimulusDirectories.Experimental.conditions = {'pathways', 'targetCarryover', 'fillerCarryover', 'nullCarryover'};
+%  StimulusDirectories.Experimental.directory = directoryExperimental;
+%  StimulusDirectories.Target.conditions = {'target'};
+%  StimulusDirectories.Target.directory = directoryTarget;
+%  StimulusDirectories.Filler.conditions = {'filler'};
+%  StimulusDirectories.Filler.directory = directoryFiller;
+%  StimulusDirectories.Null.conditions = {'null'};
+%  StimulusDirectories.Null.directory = [];
+%  StimulusDirectories.WrapUp.conditions = {'wrapUp'};
+%  StimulusDirectories.WrapUp.directory = [];
+%  
+%  FullfileParameters.StimulusDirectories = StimulusDirectories;
+%  FullfileParameters.thisCondition = thisCondition;
+%  FullfileParameters.thisStimulusFile = thisStimulusFile;
+%  
+%  thisStimulusFullFile = ptbFullfileByCondtion(FullfileParameters);
+% 
+%% See also
+% 
+% * ptbBufferImageAndCrosshairAndWaitForT
+% 
+% Michael F. Bonner | University of Pennsylvania | <http://www.michaelfbonner.com> 
+
+
+%% Function 
+
+function thisStimulusFullFile = ptbFullfileByCondtion(FullfileParameters)
+
+
+%% Assign variables
+
+% Stimulus information
+thisCondition = FullfileParameters.thisCondition;
+thisStimulusFile = FullfileParameters.thisStimulusFile;
+
+% Directories
+StimulusDirectories = FullfileParameters.StimulusDirectories;
+stimulusSets = fieldnames(StimulusDirectories);
+nStimulusSets = length(stimulusSets);
+
+
+
+%%  Create full filepath for stimulus
+
+% Assign directory based on condition
+thisStimulusFullFile = [];
+for iStimulusSets = 1 : nStimulusSets
+    
+    % Stimulus set 
+    thisStimulusSet = stimulusSets{iStimulusSets};
+    
+    % Conditions associated with this stimulus directory
+    theseConditions = StimulusDirectories.(thisStimulusSet).conditions;
+    
+    % Create fullfile based on stimulus condition
+    isCondition = ismember(theseConditions, thisCondition);
+    if any(isCondition)
+        thisDirectory = StimulusDirectories.(thisStimulusSet).directory;
+        
+        % If the directory is empty return 'null', otherwise return the
+        % full filepath
+        if isempty(thisDirectory)
+            thisStimulusFullFile = 'null';  
+        else
+            thisStimulusFullFile = fullfile(thisDirectory, thisStimulusFile);
+        end
+
+    end
+    
+end
+
+% Error checking
+if isempty(thisStimulusFullFile)
+    error('thisCondition not recognized')
+end
+
+
+end  % function thisStimulusFullFile = ptbFullfileByCondtion(StimulusDirectories)
+
+
+##### SOURCE END #####
+--></body></html>

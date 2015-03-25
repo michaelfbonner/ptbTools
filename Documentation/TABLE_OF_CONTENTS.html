@@ -1,0 +1,95 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>ptbTools</title><meta name="generator" content="MATLAB 8.5"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2015-03-25"><meta name="DC.source" content="TABLE_OF_CONTENTS.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>ptbTools</h1><!--introduction--><p>Code for ptbTools</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">ptbTools</a></li></ul></div><h2>ptbTools<a name="1"></a></h2><div><ul><li><a href="file:ptbBufferImageAndCrosshairAndWaitForT.html">ptbBufferImageAndCrosshairAndWaitForT.m</a> - Load image and crosshair to backbuffer and wait for a t | <a href="file:/Users/michaelbonner/Code/ptbtools/ptbBufferImageAndCrosshairAndWaitForT.m">code</a></li><li><a href="file:ptbCreateRandomTrialSequence.html">ptbCreateRandomTrialSequence.m</a> - Create a random sequence bookended by start-up and wrap-up trials | <a href="file:/Users/michaelbonner/Code/ptbtools/ptbCreateRandomTrialSequence.m">code</a></li><li><a href="file:ptbCrosshair.html">ptbCrosshair.m</a> - Draw a crosshair to the backbuffer | <a href="file:/Users/michaelbonner/Code/ptbtools/ptbCrosshair.m">code</a></li><li><a href="file:ptbDoubleNull.html">ptbDoubleNull.m</a> - Double null trial | <a href="file:/Users/michaelbonner/Code/ptbtools/ptbDoubleNull.m">code</a></li><li><a href="file:ptbEndRun.html">ptbEndRun.m</a> - Display message and run common wrap-up functions | <a href="file:/Users/michaelbonner/Code/ptbtools/ptbEndRun.m">code</a></li><li><a href="file:ptbFullfileByCondtion.html">ptbFullfileByCondtion.m</a> - Create full filepath for a stimulus dependent on condition | <a href="file:/Users/michaelbonner/Code/ptbtools/ptbFullfileByCondtion.m">code</a></li><li><a href="file:ptbGetResponse.html">ptbGetResponse.m</a> - Get key response while during stimulus duration | <a href="file:/Users/michaelbonner/Code/ptbtools/ptbGetResponse.m">code</a></li><li><a href="file:ptbInstructions.html">ptbInstructions.m</a> - Display instructions | <a href="file:/Users/michaelbonner/Code/ptbtools/ptbInstructions.m">code</a></li><li><a href="file:ptbInterStimulusInterval.html">ptbInterStimulusInterval.m</a> - Wait for a single t | <a href="file:/Users/michaelbonner/Code/ptbtools/ptbInterStimulusInterval.m">code</a></li><li><a href="file:ptbKbQueueCreate.html">ptbKbQueueCreate.m</a> - Start listening for keys using the KbQueue functions | <a href="file:/Users/michaelbonner/Code/ptbtools/ptbKbQueueCreate.m">code</a></li><li><a href="file:ptbRelativeTime.html">ptbRelativeTime.m</a> - Compute relative and rounded time (in milliseconds) | <a href="file:/Users/michaelbonner/Code/ptbtools/ptbRelativeTime.m">code</a></li><li><a href="file:ptbRelativeToTimeZero.html">ptbRelativeToTimeZero.m</a> - Time stamp relative to time-zero in milliseconds | <a href="file:/Users/michaelbonner/Code/ptbtools/ptbRelativeToTimeZero.m">code</a></li><li><a href="file:ptbResponseAccuracy.html">ptbResponseAccuracy.m</a> - Get response accuracy | <a href="file:/Users/michaelbonner/Code/ptbtools/ptbResponseAccuracy.m">code</a></li><li><a href="file:ptbScreenSettings.html">ptbScreenSettings.m</a> - Set standard screen settings with a gray backrgound and return the screen handle | <a href="file:/Users/michaelbonner/Code/ptbtools/ptbScreenSettings.m">code</a></li><li><a href="file:ptbSetToolboxDefaults.html">ptbSetToolboxDefaults.m</a> - Set default parameters and variables | <a href="file:/Users/michaelbonner/Code/ptbtools/ptbSetToolboxDefaults.m">code</a></li><li><a href="file:ptbSingleNull.html">ptbSingleNull.m</a> - Single null trial | <a href="file:/Users/michaelbonner/Code/ptbtools/ptbSingleNull.m">code</a></li><li><a href="file:ptbWaitForT.html">ptbWaitForT.m</a> - Wait for t | <a href="file:/Users/michaelbonner/Code/ptbtools/ptbWaitForT.m">code</a></li></ul></div><p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2015a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% ptbTools 
+% Code for ptbTools 
+% 
+%% ptbTools 
+% 
+% * <file:ptbBufferImageAndCrosshairAndWaitForT.html ptbBufferImageAndCrosshairAndWaitForT.m> - Load image and crosshair to backbuffer and wait for a t | <file:/Users/michaelbonner/Code/ptbtools/ptbBufferImageAndCrosshairAndWaitForT.m code> 
+% * <file:ptbCreateRandomTrialSequence.html ptbCreateRandomTrialSequence.m> - Create a random sequence bookended by start-up and wrap-up trials | <file:/Users/michaelbonner/Code/ptbtools/ptbCreateRandomTrialSequence.m code> 
+% * <file:ptbCrosshair.html ptbCrosshair.m> - Draw a crosshair to the backbuffer | <file:/Users/michaelbonner/Code/ptbtools/ptbCrosshair.m code> 
+% * <file:ptbDoubleNull.html ptbDoubleNull.m> - Double null trial | <file:/Users/michaelbonner/Code/ptbtools/ptbDoubleNull.m code> 
+% * <file:ptbEndRun.html ptbEndRun.m> - Display message and run common wrap-up functions | <file:/Users/michaelbonner/Code/ptbtools/ptbEndRun.m code> 
+% * <file:ptbFullfileByCondtion.html ptbFullfileByCondtion.m> - Create full filepath for a stimulus dependent on condition | <file:/Users/michaelbonner/Code/ptbtools/ptbFullfileByCondtion.m code> 
+% * <file:ptbGetResponse.html ptbGetResponse.m> - Get key response while during stimulus duration | <file:/Users/michaelbonner/Code/ptbtools/ptbGetResponse.m code> 
+% * <file:ptbInstructions.html ptbInstructions.m> - Display instructions | <file:/Users/michaelbonner/Code/ptbtools/ptbInstructions.m code> 
+% * <file:ptbInterStimulusInterval.html ptbInterStimulusInterval.m> - Wait for a single t | <file:/Users/michaelbonner/Code/ptbtools/ptbInterStimulusInterval.m code> 
+% * <file:ptbKbQueueCreate.html ptbKbQueueCreate.m> - Start listening for keys using the KbQueue functions | <file:/Users/michaelbonner/Code/ptbtools/ptbKbQueueCreate.m code> 
+% * <file:ptbRelativeTime.html ptbRelativeTime.m> - Compute relative and rounded time (in milliseconds) | <file:/Users/michaelbonner/Code/ptbtools/ptbRelativeTime.m code> 
+% * <file:ptbRelativeToTimeZero.html ptbRelativeToTimeZero.m> - Time stamp relative to time-zero in milliseconds | <file:/Users/michaelbonner/Code/ptbtools/ptbRelativeToTimeZero.m code> 
+% * <file:ptbResponseAccuracy.html ptbResponseAccuracy.m> - Get response accuracy | <file:/Users/michaelbonner/Code/ptbtools/ptbResponseAccuracy.m code> 
+% * <file:ptbScreenSettings.html ptbScreenSettings.m> - Set standard screen settings with a gray backrgound and return the screen handle | <file:/Users/michaelbonner/Code/ptbtools/ptbScreenSettings.m code> 
+% * <file:ptbSetToolboxDefaults.html ptbSetToolboxDefaults.m> - Set default parameters and variables | <file:/Users/michaelbonner/Code/ptbtools/ptbSetToolboxDefaults.m code> 
+% * <file:ptbSingleNull.html ptbSingleNull.m> - Single null trial | <file:/Users/michaelbonner/Code/ptbtools/ptbSingleNull.m code> 
+% * <file:ptbWaitForT.html ptbWaitForT.m> - Wait for t | <file:/Users/michaelbonner/Code/ptbtools/ptbWaitForT.m code> 
+
+##### SOURCE END #####
+--></body></html>
