@@ -28,16 +28,12 @@ soon).
 
 **Documentation**
 
- 
-
 See the Documentation folder. Brief descriptions of all code files are contained
 in the TABLE\_OF\_CONTENTS.html document.
 
  
 
 **Important caveat**
-
- 
 
 This toolbox is in development. All functions are new and untested. This code is
 distributed in the hope that it will be useful, but without any warranty—without
