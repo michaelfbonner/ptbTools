@@ -39,10 +39,10 @@ directoryToolbox = ToolboxDefaults.directoryToolbox;
 
 %% ptbTools
 
-CodeNotes.ptbTools.name = 'ptbTools';
+CodeNotes.(projectName).name = 'ptbTools';
 
 
-CodeNotes.ptbTools.code = {
+CodeNotes.(projectName).code = {
     
 'ptbSetToolboxDefaults.m'     'Set default parameters and variables';
 

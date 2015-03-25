@@ -20,7 +20,7 @@ locking experiment timing to the timing of the fMRI scanner).
 
  
 
-To get started, download ptbTools and PsychToolbox, add them to the search path
+To get started, download ptbTools and PsychToolbox, add them to your search path
 in Matlab, and start coding an experiment (example experiment scripts coming
 soon).
 
@@ -28,8 +28,18 @@ soon).
 
 **Documentation**
 
-See the Documentation folder. Brief descriptions of all code files are contained
-in the TABLE\_OF\_CONTENTS.html document.
+Do the following to generate HTML documentation for this project:
+
+-   Download the [htmlTools][2] toolbox and add it to your search path in Matlab
+
+    [2]: <https://github.com/michaelfbonner/htmlTools>
+
+-   Run the CodeDescriptions.m in the ptbTools directory to generate HTML
+    documentation for this project
+
+This will generate HTML documentation for all functions in a new directory
+titled Documentation. Brief descriptions of all functions can be found in the
+TABLE\_OF\_CONTENTS.html document.
 
  
 
