@@ -29,13 +29,8 @@ Start coding an experiment (example experiment scripts coming soon).
 
 **Documentation**
 
-Download [htmlTools][2], which will be used to generate HTML documentation for
-this project. Add it to your search path in Matlab. Run the file
-CodeDescriptions.m in the ptbTools directory. This will generate in a new
-directory (Documentation) with HTML documentation for all functions. Brief
-descriptions of all functions can be found in TABLE\_OF\_CONTENTS.html.
-
-[2]: <https://github.com/michaelfbonner/htmlTools>
+The directory titled Documentation contains HTML manuals for all functions. See
+the TABLE\_OF\_CONTENTS.html file to get started.
 
  
 
