@@ -64,6 +64,8 @@ CodeNotes.(thisDirectory).code = {
 'ptbKbQueueCreate.m'    'Start listening for keys using the KbQueue functions';
 'ptbRelativeTime.m'     'Compute relative and rounded time (in milliseconds)';
 'ptbResponseAccuracy.m'     'Get response accuracy';
+'ptbRunExperiment.m'    'Run all sessions of an experiment';
+'ptbTargetCategoryExperimentA.m'    'Category-detection task for fMRI';
 
 };
 

@@ -1,0 +1,313 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>ptbRunExperiment</title><meta name="generator" content="MATLAB 8.5"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2015-03-26"><meta name="DC.source" content="ptbRunExperiment.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>ptbRunExperiment</h1><!--introduction--><p>Run all sessions of an experiment</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Example</a></li><li><a href="#4">See also</a></li><li><a href="#5">Function</a></li><li><a href="#7">Assign variables</a></li><li><a href="#8">Check if any sessions have already been run for this subject</a></li><li><a href="#9">Loop through experimental runs</a></li></ul></div><h2>Syntax<a name="1"></a></h2><p>ptbRunExperiment(ExperimentParameters)</p><h2>Description<a name="2"></a></h2><p>ptbRunExperiment runs all sessions for an experiment by iteratively passing the subjectNumber and runNumber to the experiment function. This function creates a RunLog file and updates after each run. The RunLog file is used to determine which runs have already been completed for this subject.</p><div><ul><li>ExperimentParameters.directoryOutput    - directory to save the RunLog to</li><li>ExperimentParameters.nRuns  - number of runs in the experiment</li><li>ExperimentParameters.experimentFunction     - name of the experiment function</li></ul></div><h2>Example<a name="3"></a></h2><pre>% Import default settings
+setPtbParameters_TargetCategory_v001;</pre><pre>% Directories
+directorySequences = PtbParameters.directorySequences;
+directoryOutput = PtbParameters.directoryOutput;
+directoryPtbTools = PtbParameters.directoryPtbTools;</pre><pre>% Add ptbTools paths
+addpath(directoryPtbTools);</pre><pre>% Get total number of runs
+SequenceParametersFullFile = fullfile(directorySequences, 'SequenceParameters.mat');
+load(SequenceParametersFullFile);  % Loads SequenceParameters
+nRuns = SequenceParameters.nRuns;
+clear SequenceParameters;</pre><pre>% Run experiment
+ExperimentParameters.directoryOutput = directoryOutput;
+ExperimentParameters.nRuns = nRuns;
+ExperimentParameters.experimentFunction = 'scannerProtocol_ptbTargetCategory_v001';
+ptbRunExperiment(ExperimentParameters)</pre><h2>See also<a name="4"></a></h2><p>Michael F. Bonner | University of Pennsylvania | <a href="http://www.michaelfbonner.com">http://www.michaelfbonner.com</a></p><h2>Function<a name="5"></a></h2><pre class="codeinput"><span class="keyword">function</span> ptbRunExperiment(ExperimentParameters)
+</pre><h2>Assign variables<a name="7"></a></h2><pre class="codeinput"><span class="comment">% Inputs</span>
+directoryOutput = ExperimentParameters.directoryOutput;
+nRuns = ExperimentParameters.nRuns;
+experimentFunction = ExperimentParameters.experimentFunction;
+
+<span class="comment">% Output directory</span>
+<span class="keyword">if</span> ~exist(directoryOutput, <span class="string">'dir'</span>)
+    mkdir(directoryOutput);
+<span class="keyword">end</span>
+
+<span class="comment">% Prompt for subject number</span>
+clc
+subjectNumber = input(<span class="string">'Subject number?: '</span>);
+subjectName = [<span class="string">'subj'</span> num2str(subjectNumber, <span class="string">'%03d'</span>)];
+</pre><h2>Check if any sessions have already been run for this subject<a name="8"></a></h2><p>Load the RunLogFullFile, which loads the RunLog structure: * RunLog.(subjectName).Runs(runNumber).complete</p><pre class="codeinput"><span class="comment">% Log file</span>
+RunLogFile = <span class="string">'RunLog.mat'</span>;
+RunLogFullFile = fullfile(directoryOutput, RunLogFile);
+
+<span class="comment">% Load RunLog and calculate startRun</span>
+<span class="keyword">if</span> exist(RunLogFullFile, <span class="string">'file'</span>)
+    load(RunLogFullFile);
+    nRunsComplete = length(RunLog.(subjectName).Runs);
+<span class="keyword">else</span>
+    nRunsComplete = 0;
+<span class="keyword">end</span>
+startRun = nRunsComplete + 1;
+
+<span class="comment">% Ask if the startRun is correct</span>
+startRunPrompt = [num2str(nRunsComplete) <span class="string">' runs have already been run for this subject. Start at run '</span> num2str(startRun) <span class="string">'? (y or n): '</span>];
+clc
+startRunResponse = input(startRunPrompt, <span class="string">'s'</span>);
+isStartRunCorrect = strcmp(<span class="string">'y'</span>, startRunResponse);
+
+<span class="comment">% Abort experiment if the start run is incorrect</span>
+<span class="keyword">if</span> ~isStartRunCorrect
+    disp(<span class="string">'Experiment stopped because of incorrect start run. You may need to edit the RunLog to fix this.'</span>)
+    clear
+    <span class="keyword">return</span>
+<span class="keyword">end</span>
+</pre><h2>Loop through experimental runs<a name="9"></a></h2><p>Execute each run of the experiment. Give the experimenter the option to abort between runs and save the RunLog file. If there is an error during the run, the RunLog file is saved before exiting. This means that experimenter should be able to clear the workspace and just run the script again once the error has been resolved.</p><pre class="codeinput"><span class="keyword">for</span> iRuns = startRun : nRuns
+
+    <span class="comment">% Run experiment</span>
+    <span class="keyword">try</span>
+        feval(experimentFunction, subjectNumber, iRuns);
+    <span class="keyword">catch</span> ME
+        save(RunLogFullFile, <span class="string">'RunLog'</span>);  <span class="comment">% save before exiting</span>
+        rethrow(ME)
+    <span class="keyword">end</span>
+
+    <span class="comment">% Update RunLog</span>
+    RunLog.(subjectName).Runs(iRuns).complete = true;
+
+    <span class="comment">% Prompt to start next experiment</span>
+    <span class="keyword">if</span> iRuns &lt; nRuns
+        nextRunPrompt = [<span class="string">'Start run '</span> num2str(iRuns + 1)  <span class="string">' of '</span> num2str(nRuns) <span class="string">'? (y or n):'</span>];
+        clc
+        nextRunResponse = input(nextRunPrompt, <span class="string">'s'</span>);
+        isReadyForNextRun = strcmp(<span class="string">'y'</span>, nextRunResponse);
+        <span class="keyword">if</span> ~isReadyForNextRun
+            save(RunLogFullFile, <span class="string">'RunLog'</span>);  <span class="comment">% save before exiting</span>
+            disp(<span class="string">'Experiment stopped. The RunLog was saved. When ready, run this script again to continue to the next run.'</span>)
+            <span class="keyword">break</span>
+        <span class="keyword">end</span>  <span class="comment">% if ~isReadyForNextRun</span>
+    <span class="keyword">else</span>
+        disp(<span class="string">'End of experiment'</span>)
+    <span class="keyword">end</span>  <span class="comment">% if iRuns &lt; nRuns</span>
+
+<span class="keyword">end</span>  <span class="comment">% for iRuns = startRun : nRuns</span>
+
+<span class="comment">% Save RunLog</span>
+save(RunLogFullFile, <span class="string">'RunLog'</span>);
+</pre><pre class="codeinput"><span class="keyword">end</span>  <span class="comment">% function ptbRunExperiment(ExperimentParameters)</span>
+</pre><p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2015a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% ptbRunExperiment
+%
+% Run all sessions of an experiment
+% 
+%% Syntax
+% 
+% ptbRunExperiment(ExperimentParameters)
+% 
+%% Description
+% 
+% ptbRunExperiment runs all sessions for an experiment by iteratively
+% passing the subjectNumber and runNumber to the experiment function. This
+% function creates a RunLog file and updates after each run. The RunLog
+% file is used to determine which runs have already been completed for this
+% subject.
+% 
+% * ExperimentParameters.directoryOutput    - directory to save the RunLog
+% to
+% * ExperimentParameters.nRuns  - number of runs in the experiment
+% * ExperimentParameters.experimentFunction     - name of the experiment
+% function
+%
+%% Example
+%
+%  % Import default settings
+%  setPtbParameters_TargetCategory_v001;
+%  
+%  % Directories
+%  directorySequences = PtbParameters.directorySequences;
+%  directoryOutput = PtbParameters.directoryOutput;
+%  directoryPtbTools = PtbParameters.directoryPtbTools;
+%  
+%  % Add ptbTools paths
+%  addpath(directoryPtbTools);
+%  
+%  % Get total number of runs
+%  SequenceParametersFullFile = fullfile(directorySequences, 'SequenceParameters.mat');
+%  load(SequenceParametersFullFile);  % Loads SequenceParameters
+%  nRuns = SequenceParameters.nRuns;
+%  clear SequenceParameters;
+%   
+%  % Run experiment
+%  ExperimentParameters.directoryOutput = directoryOutput;
+%  ExperimentParameters.nRuns = nRuns;
+%  ExperimentParameters.experimentFunction = 'scannerProtocol_ptbTargetCategory_v001';
+%  ptbRunExperiment(ExperimentParameters)
+% 
+%% See also
+% 
+% Michael F. Bonner | University of Pennsylvania | <http://www.michaelfbonner.com> 
+
+
+
+%% Function
+
+function ptbRunExperiment(ExperimentParameters)
+
+
+%% Assign variables
+
+% Inputs
+directoryOutput = ExperimentParameters.directoryOutput;
+nRuns = ExperimentParameters.nRuns;
+experimentFunction = ExperimentParameters.experimentFunction;
+
+% Output directory
+if ~exist(directoryOutput, 'dir')
+    mkdir(directoryOutput);
+end
+
+% Prompt for subject number
+clc
+subjectNumber = input('Subject number?: ');
+subjectName = ['subj' num2str(subjectNumber, '%03d')];
+
+
+
+%% Check if any sessions have already been run for this subject
+% 
+% Load the RunLogFullFile, which loads the RunLog structure:
+% * RunLog.(subjectName).Runs(runNumber).complete
+
+% Log file
+RunLogFile = 'RunLog.mat';
+RunLogFullFile = fullfile(directoryOutput, RunLogFile);
+
+% Load RunLog and calculate startRun
+if exist(RunLogFullFile, 'file')
+    load(RunLogFullFile);
+    nRunsComplete = length(RunLog.(subjectName).Runs);
+else
+    nRunsComplete = 0;
+end
+startRun = nRunsComplete + 1;
+
+% Ask if the startRun is correct
+startRunPrompt = [num2str(nRunsComplete) ' runs have already been run for this subject. Start at run ' num2str(startRun) '? (y or n): '];
+clc
+startRunResponse = input(startRunPrompt, 's');
+isStartRunCorrect = strcmp('y', startRunResponse);
+
+% Abort experiment if the start run is incorrect
+if ~isStartRunCorrect
+    disp('Experiment stopped because of incorrect start run. You may need to edit the RunLog to fix this.')
+    clear
+    return  
+end
+
+
+
+%% Loop through experimental runs
+%
+% Execute each run of the experiment. Give the experimenter the option to
+% abort between runs and save the RunLog file. If there is an error during
+% the run, the RunLog file is saved before exiting. This means that
+% experimenter should be able to clear the workspace and just run the
+% script again once the error has been resolved.
+
+for iRuns = startRun : nRuns
+    
+    % Run experiment
+    try
+        feval(experimentFunction, subjectNumber, iRuns);
+    catch ME
+        save(RunLogFullFile, 'RunLog');  % save before exiting
+        rethrow(ME)
+    end
+    
+    % Update RunLog
+    RunLog.(subjectName).Runs(iRuns).complete = true;
+    
+    % Prompt to start next experiment
+    if iRuns < nRuns
+        nextRunPrompt = ['Start run ' num2str(iRuns + 1)  ' of ' num2str(nRuns) '? (y or n):'];
+        clc
+        nextRunResponse = input(nextRunPrompt, 's');
+        isReadyForNextRun = strcmp('y', nextRunResponse);
+        if ~isReadyForNextRun
+            save(RunLogFullFile, 'RunLog');  % save before exiting
+            disp('Experiment stopped. The RunLog was saved. When ready, run this script again to continue to the next run.')
+            break
+        end  % if ~isReadyForNextRun
+    else
+        disp('End of experiment')
+    end  % if iRuns < nRuns
+    
+end  % for iRuns = startRun : nRuns
+
+% Save RunLog
+save(RunLogFullFile, 'RunLog');
+
+
+end  % function ptbRunExperiment(ExperimentParameters)
+
+
+##### SOURCE END #####
+--></body></html>
