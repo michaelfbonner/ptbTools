@@ -41,9 +41,9 @@ cd(directoryProject);
 
 
 
-%% Notes on publish directory
+%% Notes on utils directory
 
-thisDirectory = 'ptbTools';
+thisDirectory = 'utils';
 CodeNotes.(thisDirectory).name = thisDirectory;
 CodeNotes.(thisDirectory).code = {
    
@@ -54,7 +54,6 @@ CodeNotes.(thisDirectory).code = {
 'ptbDoubleNull.m'   'Double null trial';
 'ptbSingleNull.m'   'Single null trial';
 'ptbRelativeToTimeZero.m'   'Time stamp relative to time-zero in milliseconds';
-'ptbBufferImageAndCrosshairAndWaitForT.m'   'Load image and crosshair to backbuffer and wait for a t';
 'ptbInterStimulusInterval.m'    'Wait for a single t';
 'ptbCreateRandomTrialSequence.m'    'Create a random sequence bookended by start-up and wrap-up trials';
 'ptbCrosshair.m'    'Draw a crosshair to the backbuffer';
@@ -64,6 +63,17 @@ CodeNotes.(thisDirectory).code = {
 'ptbKbQueueCreate.m'    'Start listening for keys using the KbQueue functions';
 'ptbRelativeTime.m'     'Compute relative and rounded time (in milliseconds)';
 'ptbResponseAccuracy.m'     'Get response accuracy';
+
+};
+
+
+
+%% Notes on experiments directory
+
+thisDirectory = 'experiments';
+CodeNotes.(thisDirectory).name = thisDirectory;
+CodeNotes.(thisDirectory).code = {
+   
 'ptbRunExperiment.m'    'Run all sessions of an experiment';
 'ptbTargetCategoryExperimentA.m'    'Category-detection task for fMRI';
 

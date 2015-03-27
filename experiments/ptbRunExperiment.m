@@ -22,30 +22,32 @@
 %
 %% Example
 %
-%  % Import default settings
-%  setPtbParameters_TargetCategory_v001;
-%  
-%  % Directories
-%  directorySequences = PtbParameters.directorySequences;
-%  directoryOutput = PtbParameters.directoryOutput;
-%  directoryPtbTools = PtbParameters.directoryPtbTools;
-%  
-%  % Add ptbTools paths
-%  addpath(directoryPtbTools);
-%  
-%  % Get total number of runs
-%  SequenceParametersFullFile = fullfile(directorySequences, 'SequenceParameters.mat');
-%  load(SequenceParametersFullFile);  % Loads SequenceParameters
-%  nRuns = SequenceParameters.nRuns;
-%  clear SequenceParameters;
+%   % Import default settings
+%   setPtbParameters_TargetCategory_v001;
 %   
-%  % Run experiment
-%  ExperimentParameters.directoryOutput = directoryOutput;
-%  ExperimentParameters.nRuns = nRuns;
-%  ExperimentParameters.experimentFunction = 'scannerProtocol_ptbTargetCategory_v001';
-%  ptbRunExperiment(ExperimentParameters)
+%   % Directories
+%   directorySequences = PtbParameters.directorySequences;
+%   directoryOutput = PtbParameters.directoryOutput;
+%   directoryPtbTools = PtbParameters.directoryPtbTools;
+%   
+%   % Add ptbTools paths
+%   addpath(directoryPtbTools);
+%   
+%   % Get total number of runs
+%   SequenceParametersFullFile = fullfile(directorySequences, 'SequenceParameters.mat');
+%   load(SequenceParametersFullFile);  % Loads SequenceParameters
+%   nRuns = SequenceParameters.nRuns;
+%   clear SequenceParameters;
+%    
+%   % Run experiment
+%   ExperimentParameters.directoryOutput = directoryOutput;
+%   ExperimentParameters.nRuns = nRuns;
+%   ExperimentParameters.experimentFunction = 'scannerProtocol_ptbTargetCategory_v001';
+%   ptbRunExperiment(ExperimentParameters)
 % 
 %% See also
+% 
+% * <file:ptbTargetCategoryExperimentA.html ptbTargetCategoryExperimentA>
 % 
 % Michael F. Bonner | University of Pennsylvania | <http://www.michaelfbonner.com> 
 

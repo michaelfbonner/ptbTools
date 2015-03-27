@@ -6,7 +6,7 @@
    <!--
 This HTML was auto-generated from MATLAB code.
 To make changes, update the MATLAB code and republish this document.
-      --><title>ptbRunExperiment</title><meta name="generator" content="MATLAB 8.5"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2015-03-26"><meta name="DC.source" content="ptbRunExperiment.m"><style type="text/css">
+      --><title>ptbRunExperiment</title><meta name="generator" content="MATLAB 8.5"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2015-03-27"><meta name="DC.source" content="ptbRunExperiment.m"><style type="text/css">
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
 
 html { min-height:100%; margin-bottom:1px; }
@@ -66,20 +66,25 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 
 
 
-  </style></head><body><div class="content"><h1>ptbRunExperiment</h1><!--introduction--><p>Run all sessions of an experiment</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Example</a></li><li><a href="#4">See also</a></li><li><a href="#5">Function</a></li><li><a href="#7">Assign variables</a></li><li><a href="#8">Check if any sessions have already been run for this subject</a></li><li><a href="#9">Loop through experimental runs</a></li></ul></div><h2>Syntax<a name="1"></a></h2><p>ptbRunExperiment(ExperimentParameters)</p><h2>Description<a name="2"></a></h2><p>ptbRunExperiment runs all sessions for an experiment by iteratively passing the subjectNumber and runNumber to the experiment function. This function creates a RunLog file and updates after each run. The RunLog file is used to determine which runs have already been completed for this subject.</p><div><ul><li>ExperimentParameters.directoryOutput    - directory to save the RunLog to</li><li>ExperimentParameters.nRuns  - number of runs in the experiment</li><li>ExperimentParameters.experimentFunction     - name of the experiment function</li></ul></div><h2>Example<a name="3"></a></h2><pre>% Import default settings
-setPtbParameters_TargetCategory_v001;</pre><pre>% Directories
+  </style></head><body><div class="content"><h1>ptbRunExperiment</h1><!--introduction--><p>Run all sessions of an experiment</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Example</a></li><li><a href="#4">See also</a></li><li><a href="#5">Function</a></li><li><a href="#7">Assign variables</a></li><li><a href="#8">Check if any sessions have already been run for this subject</a></li><li><a href="#9">Loop through experimental runs</a></li></ul></div><h2>Syntax<a name="1"></a></h2><p>ptbRunExperiment(ExperimentParameters)</p><h2>Description<a name="2"></a></h2><p>ptbRunExperiment runs all sessions for an experiment by iteratively passing the subjectNumber and runNumber to the experiment function. This function creates a RunLog file and updates after each run. The RunLog file is used to determine which runs have already been completed for this subject.</p><div><ul><li>ExperimentParameters.directoryOutput    - directory to save the RunLog to</li><li>ExperimentParameters.nRuns  - number of runs in the experiment</li><li>ExperimentParameters.experimentFunction     - name of the experiment function</li></ul></div><h2>Example<a name="3"></a></h2><pre class="language-matlab"><span class="comment">% Import default settings</span>
+setPtbParameters_TargetCategory_v001;
+</pre><pre class="language-matlab"><span class="comment">% Directories</span>
 directorySequences = PtbParameters.directorySequences;
 directoryOutput = PtbParameters.directoryOutput;
-directoryPtbTools = PtbParameters.directoryPtbTools;</pre><pre>% Add ptbTools paths
-addpath(directoryPtbTools);</pre><pre>% Get total number of runs
-SequenceParametersFullFile = fullfile(directorySequences, 'SequenceParameters.mat');
-load(SequenceParametersFullFile);  % Loads SequenceParameters
+directoryPtbTools = PtbParameters.directoryPtbTools;
+</pre><pre class="language-matlab"><span class="comment">% Add ptbTools paths</span>
+addpath(directoryPtbTools);
+</pre><pre class="language-matlab"><span class="comment">% Get total number of runs</span>
+SequenceParametersFullFile = fullfile(directorySequences, <span class="string">'SequenceParameters.mat'</span>);
+load(SequenceParametersFullFile);  <span class="comment">% Loads SequenceParameters</span>
 nRuns = SequenceParameters.nRuns;
-clear SequenceParameters;</pre><pre>% Run experiment
+clear <span class="string">SequenceParameters</span>;
+</pre><pre class="language-matlab"><span class="comment">% Run experiment</span>
 ExperimentParameters.directoryOutput = directoryOutput;
 ExperimentParameters.nRuns = nRuns;
-ExperimentParameters.experimentFunction = 'scannerProtocol_ptbTargetCategory_v001';
-ptbRunExperiment(ExperimentParameters)</pre><h2>See also<a name="4"></a></h2><p>Michael F. Bonner | University of Pennsylvania | <a href="http://www.michaelfbonner.com">http://www.michaelfbonner.com</a></p><h2>Function<a name="5"></a></h2><pre class="codeinput"><span class="keyword">function</span> ptbRunExperiment(ExperimentParameters)
+ExperimentParameters.experimentFunction = <span class="string">'scannerProtocol_ptbTargetCategory_v001'</span>;
+ptbRunExperiment(ExperimentParameters)
+</pre><h2>See also<a name="4"></a></h2><div><ul><li><a href="file:ptbTargetCategoryExperimentA.html">ptbTargetCategoryExperimentA</a></li></ul></div><p>Michael F. Bonner | University of Pennsylvania | <a href="http://www.michaelfbonner.com">http://www.michaelfbonner.com</a></p><h2>Function<a name="5"></a></h2><pre class="codeinput"><span class="keyword">function</span> ptbRunExperiment(ExperimentParameters)
 </pre><h2>Assign variables<a name="7"></a></h2><pre class="codeinput"><span class="comment">% Inputs</span>
 directoryOutput = ExperimentParameters.directoryOutput;
 nRuns = ExperimentParameters.nRuns;
@@ -178,30 +183,32 @@ save(RunLogFullFile, <span class="string">'RunLog'</span>);
 %
 %% Example
 %
-%  % Import default settings
-%  setPtbParameters_TargetCategory_v001;
-%  
-%  % Directories
-%  directorySequences = PtbParameters.directorySequences;
-%  directoryOutput = PtbParameters.directoryOutput;
-%  directoryPtbTools = PtbParameters.directoryPtbTools;
-%  
-%  % Add ptbTools paths
-%  addpath(directoryPtbTools);
-%  
-%  % Get total number of runs
-%  SequenceParametersFullFile = fullfile(directorySequences, 'SequenceParameters.mat');
-%  load(SequenceParametersFullFile);  % Loads SequenceParameters
-%  nRuns = SequenceParameters.nRuns;
-%  clear SequenceParameters;
+%   % Import default settings
+%   setPtbParameters_TargetCategory_v001;
 %   
-%  % Run experiment
-%  ExperimentParameters.directoryOutput = directoryOutput;
-%  ExperimentParameters.nRuns = nRuns;
-%  ExperimentParameters.experimentFunction = 'scannerProtocol_ptbTargetCategory_v001';
-%  ptbRunExperiment(ExperimentParameters)
+%   % Directories
+%   directorySequences = PtbParameters.directorySequences;
+%   directoryOutput = PtbParameters.directoryOutput;
+%   directoryPtbTools = PtbParameters.directoryPtbTools;
+%   
+%   % Add ptbTools paths
+%   addpath(directoryPtbTools);
+%   
+%   % Get total number of runs
+%   SequenceParametersFullFile = fullfile(directorySequences, 'SequenceParameters.mat');
+%   load(SequenceParametersFullFile);  % Loads SequenceParameters
+%   nRuns = SequenceParameters.nRuns;
+%   clear SequenceParameters;
+%    
+%   % Run experiment
+%   ExperimentParameters.directoryOutput = directoryOutput;
+%   ExperimentParameters.nRuns = nRuns;
+%   ExperimentParameters.experimentFunction = 'scannerProtocol_ptbTargetCategory_v001';
+%   ptbRunExperiment(ExperimentParameters)
 % 
 %% See also
+% 
+% * <file:ptbTargetCategoryExperimentA.html ptbTargetCategoryExperimentA>
 % 
 % Michael F. Bonner | University of Pennsylvania | <http://www.michaelfbonner.com> 
 

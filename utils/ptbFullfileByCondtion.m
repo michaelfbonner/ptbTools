@@ -38,8 +38,6 @@
 % 
 %% See also
 % 
-% * ptbBufferImageAndCrosshairAndWaitForT
-% 
 % Michael F. Bonner | University of Pennsylvania | <http://www.michaelfbonner.com> 
 
 
