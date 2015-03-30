@@ -268,7 +268,9 @@ subjectName = ['subj' num2str(subjectNumber, '%03d')];
 runName = ['run' num2str(runNumber, '%03d')];
 
 % Output data file
-mkdirIF(directoryOutput);
+if ~exist(directoryOutput, 'dir');
+    mkdir(directoryOutput);
+end
 ScanDataFileName = [subjectName runName 'data.mat'];
 ScanDataFullFile = fullfile(directoryOutput, ScanDataFileName);
 
@@ -312,7 +314,7 @@ timeZeroTrial = find(isTimeZeroValues);
 % Make display transparent when debugging
 if isTransparentDisplay
     screenOpacity = 0.75;
-    PsychDebugWindowConfiguration(0, screenOpacity);  % note that timestamping will be inaccurate in this mode
+    PsychDebugWindowConfiguration(0, screenOpacity);  % note that time-stamping will be inaccurate in this mode
 end
 
 % Reseed the random-number generator
@@ -320,10 +322,8 @@ rand('state', sum(100 * clock));
 
 % PsychToolbox settings
 hScreen = ptbScreenSettings;  % screen settings, including a standard gray background
-Screen('Preference', 'SkipSyncTests', 1);  % Override timing check
 AssertOpenGL;  % Check for OpenGL compatibility, abort otherwise
 KbName('UnifyKeyNames'); % Make sure keyboard mapping is the same on all supported operating systems: Apple MacOS/X, MS-Windows and GNU/Linux:
-% ListenChar(2);    % Uncomment this when the experiment is ready to run and has been debugged. This command prevents the key response from being sent to the Matlab screen.
 
 % Position for center of screen
 screenSize = Screen('Rect', hScreen); 
@@ -396,7 +396,7 @@ ResponseData.ReactionTime.relative = nan(nTrials, 1, 'single');
 %% Present stimuli
 
 timeZero = [];
-for iTrials = 1 : 5 %nTrials
+for iTrials = 1 : nTrials
 
     % Check for time-zero trial
     isTimeZero = iTrials == timeZeroTrial;
@@ -493,6 +493,7 @@ for iTrials = 1 : 5 %nTrials
         thisTrialAccuracy = ptbResponseAccuracy(thisResponseKey, thisCondition, ResponseParameters);
 
         % Display crosshair
+        Screen('Close');
         ptbCrosshair(CrosshairParameters);
         [~, thisStimulusOffset] = Screen('Flip', hScreen);
 

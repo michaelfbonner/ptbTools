@@ -83,14 +83,15 @@ subjectName = ['subj' num2str(subjectNumber, '%03d')];
 % * RunLog.(subjectName).Runs(runNumber).complete
 
 % Log file
-RunLogFile = 'RunLog.mat';
+RunLogFile = [subjectName 'RunLog.mat'];
 RunLogFullFile = fullfile(directoryOutput, RunLogFile);
 
 % Load RunLog and calculate startRun
 if exist(RunLogFullFile, 'file')
     load(RunLogFullFile);
-    nRunsComplete = length(RunLog.(subjectName).Runs);
+    nRunsComplete = length(RunLog);
 else
+    RunLog = struct();
     nRunsComplete = 0;
 end
 startRun = nRunsComplete + 1;
@@ -129,7 +130,7 @@ for iRuns = startRun : nRuns
     end
     
     % Update RunLog
-    RunLog.(subjectName).Runs(iRuns).complete = true;
+    RunLog(iRuns).complete = true;
     
     % Prompt to start next experiment
     if iRuns < nRuns
