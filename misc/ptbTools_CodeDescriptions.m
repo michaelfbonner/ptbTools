@@ -76,6 +76,7 @@ CodeNotes.(thisDirectory).code = {
    
 'ptbRunExperiment.m'    'Run all sessions of an experiment';
 'ptbTargetCategoryExperimentA.m'    'Category-detection task for fMRI';
+'ptbTargetCategoryExperimentA_Training.m'   'Training for ptbTargetCategoryExperimentA';
 
 };
 

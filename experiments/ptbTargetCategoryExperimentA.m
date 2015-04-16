@@ -455,6 +455,8 @@ for iTrials = 1 : nTrials
         % Stimulus trials: 
         % * startUp
         % * pathways
+        % * target
+        % * filler
         % * targetCarryover
         % * fillerCarryover
         % * nullCarryover

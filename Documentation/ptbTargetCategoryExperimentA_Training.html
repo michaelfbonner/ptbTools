@@ -1,0 +1,751 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>ptbTargetCategoryExperimentA_Training</title><meta name="generator" content="MATLAB 8.5"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2015-04-16"><meta name="DC.source" content="ptbTargetCategoryExperimentA_Training.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>ptbTargetCategoryExperimentA_Training</h1><!--introduction--><p>Training for ptbTargetCategoryExperimentA</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Example</a></li><li><a href="#4">See also</a></li><li><a href="#5">Function</a></li><li><a href="#7">Assign variables</a></li><li><a href="#8">Create sequence</a></li><li><a href="#9">Set experiment parameters</a></li><li><a href="#10">Display instructions</a></li><li><a href="#11">Present stimuli</a></li><li><a href="#12">End session</a></li></ul></div><h2>Syntax<a name="1"></a></h2><p>ptbTargetCategoryExperimentA_Training(SessionParameters)</p><h2>Description<a name="2"></a></h2><p>ptbTargetCategoryExperimentA_Training a training task for ptbTargetCategoryExperimentA with optional feedback on target trials.</p><div><ul><li>SessionParameters.isTransparentDisplay   - logical value indicating whether the display should be made semi-transparent, which can be helpfulf during debugging. 1 indicates a semi-transparent display. 0 indicates a real experiment and makes the dispay opaque. Transparency should only be used during debugging.</li><li>SessionParameters.Stimuli.experimental - cell array of full file paths for experimental stimuli to use during training</li><li>SessionParameters.Stimuli.experimental - cell array of full file paths for target stimuli to use during training</li><li>SessionParameters.ResponseParameters   - this is the ResponseParameters structure that will be passed to <a href="file:ptbResponseAccuracy.html">ptbResponseAccuracy</a></li><li>SessionParameters.Timing    - a structure of timing information that must contain the following fields:</li></ul></div><p>
+<ul>
+<ul style="list-style-type:circle">
+<li>Timing.cStimulusDuration    - amount of time (in seconds) that the
+stimulus will be displayed</li>
+<li>Timing.cTrialDuration    - amount of time (in seconds) per trial to use
+in debugging mode</li>
+</ul>
+</ul>
+</p><div><ul><li>SessionParameters.imageSize 	- size at which the stimulus images will be displayed. Note that if the actual images do not match this, they will be resized</li><li>SessionParameters.instructions 	- instructions that will be displayed at the start of the experiment (before the the first 't' input)</li></ul></div><h2>Example<a name="3"></a></h2><pre class="language-matlab"><span class="comment">% Import default settings</span>
+setDefaultsExperimentATraining;
+isTransparentDisplay = PtbParameters.isTransparentDisplay;
+</pre><pre class="language-matlab"><span class="comment">% Directories</span>
+directoryStimuli = PtbParameters.directoryStimuli;
+directoryExperimental = fullfile(directoryStimuli, <span class="string">'pathways'</span>);
+directoryTarget = fullfile(directoryStimuli, <span class="string">'target'</span>);
+</pre><pre class="language-matlab"><span class="comment">% Add ptbTools paths</span>
+addpath(genpath(PtbParameters.directoryPtbTools));
+</pre><pre class="language-matlab"><span class="comment">% Condition labels and associated directories (this will be passed to</span>
+<span class="comment">% ptbFullfileByCondtion)</span>
+StimulusDirectories.Experimental.conditions = {<span class="string">'pathways'</span>};
+StimulusDirectories.Experimental.directory = directoryExperimental;
+StimulusDirectories.Target.conditions = {<span class="string">'target'</span>};
+StimulusDirectories.Target.directory = directoryTarget;
+StimulusDirectories.Null.conditions = {<span class="string">'null'</span>};
+StimulusDirectories.Null.directory = [];
+</pre><pre class="language-matlab"><span class="comment">% Response keys and conditions</span>
+rightKey = <span class="string">'m'</span>;
+responseKeys = {rightKey};
+rightConditionLabel = <span class="string">'target'</span>;
+ResponseParameters.responseKeys = responseKeys;
+ResponseParameters.rightKey = rightKey;
+ResponseParameters.rightConditionLabel = rightConditionLabel;
+ResponseParameters.leftKey = nan;
+ResponseParameters.leftConditionLabel = nan;
+</pre><pre class="language-matlab"><span class="comment">% Timing (in seconds)</span>
+Timing.cStimulusDuration = 1.5;  <span class="comment">% seconds</span>
+Timing.cTrialDuration = 2;  <span class="comment">% for debugging mode</span>
+</pre><pre class="language-matlab"><span class="comment">% Screen size, which is used for sizing the stimulus</span>
+hScreen = ptbScreenSettings;  <span class="comment">% screen settings, including a standard gray background</span>
+screenSize = Screen(<span class="string">'Rect'</span>, hScreen);
+screenHeight = screenSize(3);
+</pre><pre class="language-matlab"><span class="comment">% Image size</span>
+cImageDownsize = PtbParameters.cImageDownsize;
+imageExtension = PtbParameters.imageExtension;
+directoryExampleImage = fullfile(directoryStimuli, <span class="string">'pathways'</span>);
+searchInput = fullfile(directoryExampleImage, [<span class="string">'*'</span> imageExtension]);
+SearchResults = dir(searchInput);
+exampleImageFile = fullfile(directoryExampleImage, SearchResults(1).name);
+exampleImage = imread(exampleImageFile);
+exampleImageSize = size(exampleImage);
+exampleImageSize = exampleImageSize(1 : 2);
+exampleImageHeight = exampleImageSize(1);
+largestPossibleScaling = screenHeight / exampleImageHeight;
+cImageScale = cImageDownsize * largestPossibleScaling;
+imageSize = exampleImageSize * cImageScale;
+clear <span class="string">exampleImage</span> <span class="string">searchInput</span> <span class="string">searchResults</span> <span class="string">directoryExampleImage</span>;
+</pre><pre class="language-matlab"><span class="comment">% Experimental stimuli</span>
+directoryExperimentalStimuli = fullfile(directoryStimuli, <span class="string">'pathways'</span>);
+searchInput = fullfile(directoryExperimentalStimuli, [<span class="string">'*'</span> imageExtension]);
+SearchResults = dir(searchInput);
+nStimuli = length(SearchResults);
+experimentalStimuli = cell(nStimuli, 1);
+<span class="keyword">for</span> iStimuli = 1 : nStimuli
+    experimentalStimuli{iStimuli} = fullfile(directoryExperimentalStimuli,  SearchResults(iStimuli).name);
+<span class="keyword">end</span>
+Stimuli.experimental = experimentalStimuli;
+</pre><pre class="language-matlab"><span class="comment">% Target stimuli</span>
+directoryTargetStimuli = fullfile(directoryStimuli, <span class="string">'target'</span>);
+searchInput = fullfile(directoryTargetStimuli, [<span class="string">'*'</span> imageExtension]);
+SearchResults = dir(searchInput);
+nStimuli = length(SearchResults);
+targetStimuli = cell(nStimuli, 1);
+<span class="keyword">for</span> iStimuli = 1 : nStimuli
+    targetStimuli{iStimuli} = fullfile(directoryTargetStimuli,  SearchResults(iStimuli).name);
+<span class="keyword">end</span>
+targetStimuli = targetStimuli(5:8);
+Stimuli.target = targetStimuli;
+</pre><pre class="language-matlab"><span class="comment">% Instructions</span>
+instructions = [
+    <span class="string">'Please fixate on the crosshair and pay attention to each scene.\n\n'</span><span class="keyword">...</span>
+    <span class="string">'Press the right button if the scene is a bathroom.\n\n'</span><span class="keyword">...</span>
+    <span class="string">'Get ready!\n\n'</span>
+    ];
+</pre><pre class="language-matlab"><span class="comment">% Run this session</span>
+SessionParameters.isTransparentDisplay = isTransparentDisplay;
+SessionParameters.Stimuli = Stimuli;
+SessionParameters.ResponseParameters = ResponseParameters;
+SessionParameters.Timing = Timing;
+SessionParameters.imageSize = imageSize;
+SessionParameters.instructions = instructions;
+SessionParameters.giveFeedback = false;
+ptbTargetCategoryExperimentA_Training(SessionParameters)
+</pre><h2>See also<a name="4"></a></h2><div><ul><li><a href="file:ptbTargetCategoryExperimentA.html">ptbTargetCategoryExperimentA</a></li><li><a href="file:ptbRunExperiment.html">ptbRunExperiment</a></li><li><a href="file:ptbFullfileByCondtion.html">ptbFullfileByCondtion</a></li><li><a href="file:ptbScreenSettings.html">ptbScreenSettings</a></li><li><a href="file:ptbInstructions.html">ptbInstructions</a></li><li><a href="file:ptbWaitForT.html">ptbWaitForT</a></li><li><a href="file:ptbKbQueueCreate.html">ptbKbQueueCreate</a></li><li><a href="file:ptbRelativeToTimeZero.html">ptbRelativeToTimeZero</a></li><li><a href="file:ptbGetResponse.html">ptbGetResponse</a></li><li><a href="file:ptbResponseAccuracy.html">ptbResponseAccuracy</a></li><li><a href="file:ptbCrosshair.html">ptbCrosshair</a></li><li><a href="file:ptbEndRun.html">ptbEndRun</a></li></ul></div><p>Michael F. Bonner | University of Pennsylvania | <a href="http://www.michaelfbonner.com">http://www.michaelfbonner.com</a></p><h2>Function<a name="5"></a></h2><pre class="codeinput"><span class="keyword">function</span> ptbTargetCategoryExperimentA_Training(SessionParameters)
+</pre><h2>Assign variables<a name="7"></a></h2><pre class="codeinput"><span class="comment">% SessionParameters inputs</span>
+isDebuggingRun = true;
+isTransparentDisplay = SessionParameters.isTransparentDisplay;
+Stimuli = SessionParameters.Stimuli;
+ResponseParameters = SessionParameters.ResponseParameters;
+Timing = SessionParameters.Timing;
+imageSize = SessionParameters.imageSize;
+instructions = SessionParameters.instructions;
+giveFeedback = SessionParameters.giveFeedback;
+
+<span class="comment">% Seed random number generator</span>
+rand(<span class="string">'seed'</span>,sum(100*clock));
+
+<span class="comment">% More input parsing</span>
+responseKeys = ResponseParameters.responseKeys;
+cStimulusDuration = Timing.cStimulusDuration;
+cTrialDuration = Timing.cTrialDuration;
+
+<span class="comment">% Delay before displaying stimulus in debuggind mode</span>
+cOnsetDelay = 0;
+
+<span class="comment">% Stimuli</span>
+experimentalStimuli = Stimuli.experimental(randperm(length(Stimuli.experimental)));  <span class="comment">% randomize</span>
+nExperimentalStimuli = length(experimentalStimuli);
+targetStimuli = Stimuli.target;
+nTargetStimuli = length(targetStimuli);
+</pre><h2>Create sequence<a name="8"></a></h2><pre class="codeinput"><span class="comment">% stimulusSequence = SequenceInfo.stimulusSequence;</span>
+<span class="comment">% conditionSequence = SequenceInfo.conditionSequence;</span>
+
+proportionNull = 0.1;
+nNullEvents = round(proportionNull * (nExperimentalStimuli + nTargetStimuli));
+
+conditions = [repmat({<span class="string">'experimental'</span>}, [nExperimentalStimuli, 1]); repmat({<span class="string">'target'</span>}, [nTargetStimuli, 1]); repmat({<span class="string">'null'</span>}, [nNullEvents, 1])];
+conditionSequence = conditions(randperm(length(conditions)));
+</pre><h2>Set experiment parameters<a name="9"></a></h2><pre class="codeinput"><span class="comment">% Make display transparent when debugging</span>
+<span class="keyword">if</span> isTransparentDisplay
+    screenOpacity = 0.75;
+    PsychDebugWindowConfiguration(0, screenOpacity);  <span class="comment">% note that time-stamping will be inaccurate in this mode</span>
+<span class="keyword">end</span>
+
+<span class="comment">% Reseed the random-number generator</span>
+rand(<span class="string">'state'</span>, sum(100 * clock));
+
+<span class="comment">% PsychToolbox settings</span>
+hScreen = ptbScreenSettings;  <span class="comment">% screen settings, including a standard gray background</span>
+AssertOpenGL;  <span class="comment">% Check for OpenGL compatibility, abort otherwise</span>
+KbName(<span class="string">'UnifyKeyNames'</span>); <span class="comment">% Make sure keyboard mapping is the same on all supported operating systems: Apple MacOS/X, MS-Windows and GNU/Linux:</span>
+
+<span class="comment">% Position for center of screen</span>
+screenSize = Screen(<span class="string">'Rect'</span>, hScreen);
+screenWidth = screenSize(4);
+screenHeight = screenSize(3);
+centerWidth = screenWidth / 2;
+centerHeight = screenHeight / 2;
+
+<span class="comment">% Crosshair</span>
+CrosshairParameters.color = [50 50 50];
+CrosshairParameters.width = 20;
+CrosshairParameters.height = 20;
+CrosshairParameters.thickness = 6;
+CrosshairParameters.screenCenterWidth = centerWidth;
+CrosshairParameters.screenCenterHeight = centerHeight;
+CrosshairParameters.screenHandle = hScreen;
+
+<span class="comment">% Text properties</span>
+Screen(<span class="string">'TextSize'</span>, hScreen, 32);
+Screen(<span class="string">'TextFont'</span>, hScreen, <span class="string">'Arial'</span>);
+
+<span class="comment">% Do dummy calls to make sure functions are loaded and ready when we need them - without delays:</span>
+WaitSecs(0.1);
+GetSecs;
+</pre><h2>Display instructions<a name="10"></a></h2><pre class="codeinput">InstructionsParameters.instructions = instructions;
+InstructionsParameters.screenHandle = hScreen;
+InstructionsParameters.textColor = WhiteIndex(hScreen);
+ptbInstructions(InstructionsParameters);
+
+<span class="comment">% If in debugging moded, wait trial duration, instead of waiting for for</span>
+<span class="comment">% the first 't' below</span>
+<span class="keyword">if</span> isDebuggingRun
+    KbWait;
+<span class="keyword">end</span>
+</pre><h2>Present stimuli<a name="11"></a></h2><pre class="codeinput"><span class="comment">% Get number of events in loop</span>
+nTrials = length(conditionSequence);
+
+timeZero = 0;
+isTimeZero = false;
+experimentalStimulusCounter = 1;
+targetStimulusCounter = 1;
+<span class="keyword">for</span> iTrials = 1 : nTrials
+
+    <span class="comment">% Condition and stimulus information</span>
+    thisCondition = conditionSequence{iTrials};
+    <span class="keyword">if</span> strcmp(thisCondition, <span class="string">'experimental'</span>)
+        thisStimulusFile = experimentalStimuli{experimentalStimulusCounter};
+        experimentalStimulusCounter = experimentalStimulusCounter + 1;
+    <span class="keyword">elseif</span> strcmp(thisCondition, <span class="string">'target'</span>)
+        thisStimulusFile = targetStimuli{targetStimulusCounter};
+        targetStimulusCounter = targetStimulusCounter + 1;
+    <span class="keyword">end</span>
+
+    <span class="comment">% Condition-specific routines</span>
+    <span class="keyword">if</span> strcmp(thisCondition, <span class="string">'null'</span>)
+
+        <span class="comment">% Double null events</span>
+
+        <span class="comment">% First null</span>
+        WaitParameters.isDebuggingRun = isDebuggingRun;
+        WaitParameters.isTimeZero = isTimeZero;
+        WaitParameters.timeZero = timeZero;
+        WaitParameters.cTrialDuration = cTrialDuration;  <span class="comment">% used only in debugging mode</span>
+        ptbWaitForT(WaitParameters);
+
+        <span class="comment">% Second null</span>
+        ptbWaitForT(WaitParameters);
+
+    <span class="keyword">else</span>
+
+        <span class="comment">% Stimulus trials:</span>
+        <span class="comment">% * startUp</span>
+        <span class="comment">% * pathways</span>
+        <span class="comment">% * target</span>
+
+        <span class="comment">% Load stimulus image</span>
+        thisImage = imread(thisStimulusFile);
+        thisImage = imresize(thisImage, imageSize);
+        thisImageScreenTexture = Screen(<span class="string">'MakeTexture'</span>, hScreen, thisImage);
+        Screen(<span class="string">'DrawTexture'</span>, hScreen, thisImageScreenTexture);  <span class="comment">% Draw texture image to backbuffer.</span>
+
+        <span class="comment">% Load crosshair on top of image</span>
+        ptbCrosshair(CrosshairParameters);
+
+        <span class="comment">% Wait for 't'</span>
+        WaitParameters.isDebuggingRun = isDebuggingRun;
+        WaitParameters.isTimeZero = isTimeZero;
+        WaitParameters.timeZero = timeZero;
+        WaitParameters.cTrialDuration = cOnsetDelay;  <span class="comment">% debugging mode: zero delay at this point</span>
+        WaitOutput = ptbWaitForT(WaitParameters);
+        thisTrialOnset = WaitOutput.thisTrialOnset;
+
+        <span class="comment">% Create KbQueue for responses</span>
+        ptbKbQueueCreate(responseKeys)
+        KbQueueFlush(); <span class="comment">% removes all keyboard presses</span>
+
+        <span class="comment">% Display stimulus</span>
+        [~, thisStimulusOnset] = Screen(<span class="string">'Flip'</span>, hScreen);
+
+        <span class="comment">% Get key response while stimulus is up</span>
+        [thisResponseKey, ~, ~] = ptbGetResponse(thisStimulusOnset, cStimulusDuration);
+
+        <span class="comment">% Compute accuracy</span>
+        thisTrialAccuracy = ptbResponseAccuracy(thisResponseKey, thisCondition, ResponseParameters);
+
+        <span class="comment">% Feedback</span>
+        <span class="keyword">if</span> giveFeedback
+            <span class="keyword">if</span> strcmp(thisCondition, <span class="string">'target'</span>)
+                <span class="keyword">if</span> thisTrialAccuracy==1
+                    InstructionsParameters.instructions = <span class="string">'Correct. That was a target trial.'</span>;
+                    InstructionsParameters.screenHandle = hScreen;
+                    InstructionsParameters.textColor = [0, 0, 255];
+                    ptbInstructions(InstructionsParameters);
+                    WaitSecs(2)
+                <span class="keyword">else</span>
+                    InstructionsParameters.instructions = <span class="string">'Incorrect. That was a target trial.'</span>;
+                    InstructionsParameters.screenHandle = hScreen;
+                    InstructionsParameters.textColor = [255, 0, 0];
+                    ptbInstructions(InstructionsParameters);
+                    WaitSecs(2)
+                <span class="keyword">end</span>  <span class="comment">% if thisTrialAccuracy==1</span>
+            <span class="keyword">end</span>  <span class="comment">% if strcmp(thisCondition, 'target')</span>
+        <span class="keyword">end</span>  <span class="comment">% if giveFeedback</span>
+
+        <span class="comment">% Display crosshair</span>
+        Screen(<span class="string">'Close'</span>);
+        ptbCrosshair(CrosshairParameters);
+        Screen(<span class="string">'Flip'</span>, hScreen);
+
+        <span class="comment">% Interstimulus interval (one 't')</span>
+        IntervalParameters.thisTrialOnset = thisTrialOnset;
+        IntervalParameters.isDebuggingRun = isDebuggingRun;
+        IntervalParameters.isTimeZero = isTimeZero;
+        IntervalParameters.timeZero = timeZero;
+        IntervalParameters.cTrialDuration = cTrialDuration;  <span class="comment">% used only in debugging mode</span>
+        ptbInterStimulusInterval(IntervalParameters);
+
+    <span class="keyword">end</span>  <span class="comment">% if strcmp(thisCondition, 'null')</span>
+
+    Screen(<span class="string">'Close'</span>);
+
+<span class="keyword">end</span>  <span class="comment">% for iTrials = 1 : nTrials</span>
+</pre><h2>End session<a name="12"></a></h2><pre class="codeinput">EndRunParameters.screenHandle = hScreen;
+EndRunParameters.message = <span class="string">'Great job!'</span>;
+EndRunParameters.textColor = WhiteIndex(hScreen);
+ptbEndRun(EndRunParameters)
+</pre><pre class="codeinput"><span class="keyword">end</span>  <span class="comment">% function ptbTargetCategoryExperimentA_Training(subjectNumber, runNumber)</span>
+</pre><p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2015a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% ptbTargetCategoryExperimentA_Training
+% 
+% Training for ptbTargetCategoryExperimentA
+% 
+%% Syntax
+% 
+% ptbTargetCategoryExperimentA_Training(SessionParameters)
+% 
+%% Description
+% 
+% ptbTargetCategoryExperimentA_Training a training task for
+% ptbTargetCategoryExperimentA with optional feedback on target trials.
+% 
+% * SessionParameters.isTransparentDisplay   - logical value indicating
+% whether the display should be made semi-transparent, which can be
+% helpfulf during debugging. 1 indicates a semi-transparent display. 0
+% indicates a real experiment and makes the dispay opaque. Transparency
+% should only be used during debugging.
+% * SessionParameters.Stimuli.experimental - cell array of full file paths
+% for experimental stimuli to use during training
+% * SessionParameters.Stimuli.experimental - cell array of full file paths
+% for target stimuli to use during training
+% * SessionParameters.ResponseParameters   - this is the ResponseParameters
+% structure that will be passed to <file:ptbResponseAccuracy.html
+% ptbResponseAccuracy>
+% * SessionParameters.Timing    - a structure of timing information that
+% must contain the following fields:
+% 
+% <html>
+% <ul>
+% <ul style="list-style-type:circle">
+% <li>Timing.cStimulusDuration    - amount of time (in seconds) that the
+% stimulus will be displayed</li>
+% <li>Timing.cTrialDuration    - amount of time (in seconds) per trial to use
+% in debugging mode</li>
+% </ul>
+% </ul>
+% </html>
+% 
+% * SessionParameters.imageSize 	- size at which the stimulus images
+% will be displayed. Note that if the actual images do not match this, they
+% will be resized
+% * SessionParameters.instructions 	- instructions that will be displayed
+% at the start of the experiment (before the the first 't' input)
+%
+%% Example
+% 
+%   % Import default settings
+%   setDefaultsExperimentATraining; 
+%   isTransparentDisplay = PtbParameters.isTransparentDisplay;
+%   
+%   % Directories
+%   directoryStimuli = PtbParameters.directoryStimuli;
+%   directoryExperimental = fullfile(directoryStimuli, 'pathways');
+%   directoryTarget = fullfile(directoryStimuli, 'target');
+%   
+%   % Add ptbTools paths
+%   addpath(genpath(PtbParameters.directoryPtbTools));
+%   
+%   % Condition labels and associated directories (this will be passed to
+%   % ptbFullfileByCondtion)
+%   StimulusDirectories.Experimental.conditions = {'pathways'};
+%   StimulusDirectories.Experimental.directory = directoryExperimental;
+%   StimulusDirectories.Target.conditions = {'target'};
+%   StimulusDirectories.Target.directory = directoryTarget;
+%   StimulusDirectories.Null.conditions = {'null'};
+%   StimulusDirectories.Null.directory = [];
+%   
+%   % Response keys and conditions
+%   rightKey = 'm';
+%   responseKeys = {rightKey};
+%   rightConditionLabel = 'target';
+%   ResponseParameters.responseKeys = responseKeys;
+%   ResponseParameters.rightKey = rightKey;
+%   ResponseParameters.rightConditionLabel = rightConditionLabel;
+%   ResponseParameters.leftKey = nan;
+%   ResponseParameters.leftConditionLabel = nan;
+%   
+%   % Timing (in seconds)
+%   Timing.cStimulusDuration = 1.5;  % seconds
+%   Timing.cTrialDuration = 2;  % for debugging mode
+%   
+%   % Screen size, which is used for sizing the stimulus
+%   hScreen = ptbScreenSettings;  % screen settings, including a standard gray background
+%   screenSize = Screen('Rect', hScreen); 
+%   screenHeight = screenSize(3);
+%   
+%   % Image size
+%   cImageDownsize = PtbParameters.cImageDownsize;
+%   imageExtension = PtbParameters.imageExtension;
+%   directoryExampleImage = fullfile(directoryStimuli, 'pathways');
+%   searchInput = fullfile(directoryExampleImage, ['*' imageExtension]);
+%   SearchResults = dir(searchInput);
+%   exampleImageFile = fullfile(directoryExampleImage, SearchResults(1).name);
+%   exampleImage = imread(exampleImageFile);
+%   exampleImageSize = size(exampleImage);
+%   exampleImageSize = exampleImageSize(1 : 2);
+%   exampleImageHeight = exampleImageSize(1);
+%   largestPossibleScaling = screenHeight / exampleImageHeight;
+%   cImageScale = cImageDownsize * largestPossibleScaling;
+%   imageSize = exampleImageSize * cImageScale;
+%   clear exampleImage searchInput searchResults directoryExampleImage;
+%   
+%   % Experimental stimuli
+%   directoryExperimentalStimuli = fullfile(directoryStimuli, 'pathways');
+%   searchInput = fullfile(directoryExperimentalStimuli, ['*' imageExtension]);
+%   SearchResults = dir(searchInput);
+%   nStimuli = length(SearchResults);
+%   experimentalStimuli = cell(nStimuli, 1);
+%   for iStimuli = 1 : nStimuli
+%       experimentalStimuli{iStimuli} = fullfile(directoryExperimentalStimuli,  SearchResults(iStimuli).name);
+%   end
+%   Stimuli.experimental = experimentalStimuli;
+%   
+%   % Target stimuli
+%   directoryTargetStimuli = fullfile(directoryStimuli, 'target');
+%   searchInput = fullfile(directoryTargetStimuli, ['*' imageExtension]);
+%   SearchResults = dir(searchInput);
+%   nStimuli = length(SearchResults);
+%   targetStimuli = cell(nStimuli, 1);
+%   for iStimuli = 1 : nStimuli
+%       targetStimuli{iStimuli} = fullfile(directoryTargetStimuli,  SearchResults(iStimuli).name);
+%   end
+%   targetStimuli = targetStimuli(5:8);
+%   Stimuli.target = targetStimuli;
+%   
+%   % Instructions
+%   instructions = [
+%       'Please fixate on the crosshair and pay attention to each scene.\n\n'...
+%       'Press the right button if the scene is a bathroom.\n\n'...
+%       'Get ready!\n\n'
+%       ]; 
+%   
+%   % Run this session
+%   SessionParameters.isTransparentDisplay = isTransparentDisplay;
+%   SessionParameters.Stimuli = Stimuli;
+%   SessionParameters.ResponseParameters = ResponseParameters;
+%   SessionParameters.Timing = Timing;
+%   SessionParameters.imageSize = imageSize;
+%   SessionParameters.instructions = instructions;
+%   SessionParameters.giveFeedback = false;
+%   ptbTargetCategoryExperimentA_Training(SessionParameters)
+% 
+%% See also
+%
+% * <file:ptbTargetCategoryExperimentA.html ptbTargetCategoryExperimentA>
+% * <file:ptbRunExperiment.html ptbRunExperiment>
+% * <file:ptbFullfileByCondtion.html ptbFullfileByCondtion>
+% * <file:ptbScreenSettings.html ptbScreenSettings>
+% * <file:ptbInstructions.html ptbInstructions>
+% * <file:ptbWaitForT.html ptbWaitForT>
+% * <file:ptbKbQueueCreate.html ptbKbQueueCreate>
+% * <file:ptbRelativeToTimeZero.html ptbRelativeToTimeZero>
+% * <file:ptbGetResponse.html ptbGetResponse>
+% * <file:ptbResponseAccuracy.html ptbResponseAccuracy>
+% * <file:ptbCrosshair.html ptbCrosshair>
+% * <file:ptbEndRun.html ptbEndRun> 
+% 
+% Michael F. Bonner | University of Pennsylvania | <http://www.michaelfbonner.com> 
+
+
+
+%% Function
+
+function ptbTargetCategoryExperimentA_Training(SessionParameters)
+
+
+%% Assign variables
+
+% SessionParameters inputs 
+isDebuggingRun = true;
+isTransparentDisplay = SessionParameters.isTransparentDisplay;
+Stimuli = SessionParameters.Stimuli;
+ResponseParameters = SessionParameters.ResponseParameters;
+Timing = SessionParameters.Timing;
+imageSize = SessionParameters.imageSize;
+instructions = SessionParameters.instructions;
+giveFeedback = SessionParameters.giveFeedback;
+
+% Seed random number generator
+rand('seed',sum(100*clock));
+
+% More input parsing
+responseKeys = ResponseParameters.responseKeys;
+cStimulusDuration = Timing.cStimulusDuration;
+cTrialDuration = Timing.cTrialDuration;
+
+% Delay before displaying stimulus in debuggind mode
+cOnsetDelay = 0;  
+
+% Stimuli
+experimentalStimuli = Stimuli.experimental(randperm(length(Stimuli.experimental)));  % randomize
+nExperimentalStimuli = length(experimentalStimuli);
+targetStimuli = Stimuli.target;
+nTargetStimuli = length(targetStimuli);
+
+
+
+%% Create sequence
+
+% stimulusSequence = SequenceInfo.stimulusSequence;
+% conditionSequence = SequenceInfo.conditionSequence;
+
+proportionNull = 0.1;
+nNullEvents = round(proportionNull * (nExperimentalStimuli + nTargetStimuli));
+
+conditions = [repmat({'experimental'}, [nExperimentalStimuli, 1]); repmat({'target'}, [nTargetStimuli, 1]); repmat({'null'}, [nNullEvents, 1])];
+conditionSequence = conditions(randperm(length(conditions)));
+
+
+
+%% Set experiment parameters
+
+% Make display transparent when debugging
+if isTransparentDisplay
+    screenOpacity = 0.75;
+    PsychDebugWindowConfiguration(0, screenOpacity);  % note that time-stamping will be inaccurate in this mode
+end
+
+% Reseed the random-number generator
+rand('state', sum(100 * clock));
+
+% PsychToolbox settings
+hScreen = ptbScreenSettings;  % screen settings, including a standard gray background
+AssertOpenGL;  % Check for OpenGL compatibility, abort otherwise
+KbName('UnifyKeyNames'); % Make sure keyboard mapping is the same on all supported operating systems: Apple MacOS/X, MS-Windows and GNU/Linux:
+
+% Position for center of screen
+screenSize = Screen('Rect', hScreen); 
+screenWidth = screenSize(4);
+screenHeight = screenSize(3);
+centerWidth = screenWidth / 2;
+centerHeight = screenHeight / 2; 
+
+% Crosshair
+CrosshairParameters.color = [50 50 50];
+CrosshairParameters.width = 20;
+CrosshairParameters.height = 20;
+CrosshairParameters.thickness = 6;
+CrosshairParameters.screenCenterWidth = centerWidth;
+CrosshairParameters.screenCenterHeight = centerHeight;
+CrosshairParameters.screenHandle = hScreen;
+
+% Text properties
+Screen('TextSize', hScreen, 32);  
+Screen('TextFont', hScreen, 'Arial');
+
+% Do dummy calls to make sure functions are loaded and ready when we need them - without delays:
+WaitSecs(0.1);
+GetSecs;
+
+
+
+%% Display instructions
+
+InstructionsParameters.instructions = instructions;
+InstructionsParameters.screenHandle = hScreen;
+InstructionsParameters.textColor = WhiteIndex(hScreen);
+ptbInstructions(InstructionsParameters);
+
+% If in debugging moded, wait trial duration, instead of waiting for for
+% the first 't' below
+if isDebuggingRun
+    KbWait;  
+end
+
+
+
+%% Present stimuli
+
+% Get number of events in loop
+nTrials = length(conditionSequence);
+
+timeZero = 0;
+isTimeZero = false;
+experimentalStimulusCounter = 1;
+targetStimulusCounter = 1;
+for iTrials = 1 : nTrials
+
+    % Condition and stimulus information
+    thisCondition = conditionSequence{iTrials};
+    if strcmp(thisCondition, 'experimental')
+        thisStimulusFile = experimentalStimuli{experimentalStimulusCounter};
+        experimentalStimulusCounter = experimentalStimulusCounter + 1;
+    elseif strcmp(thisCondition, 'target')
+        thisStimulusFile = targetStimuli{targetStimulusCounter};
+        targetStimulusCounter = targetStimulusCounter + 1; 
+    end
+
+    % Condition-specific routines
+    if strcmp(thisCondition, 'null')  
+        
+        % Double null events
+        
+        % First null
+        WaitParameters.isDebuggingRun = isDebuggingRun;
+        WaitParameters.isTimeZero = isTimeZero;
+        WaitParameters.timeZero = timeZero;
+        WaitParameters.cTrialDuration = cTrialDuration;  % used only in debugging mode
+        ptbWaitForT(WaitParameters);
+
+        % Second null
+        ptbWaitForT(WaitParameters);
+   
+    else
+        
+        % Stimulus trials: 
+        % * startUp
+        % * pathways
+        % * target
+        
+        % Load stimulus image
+        thisImage = imread(thisStimulusFile);
+        thisImage = imresize(thisImage, imageSize);
+        thisImageScreenTexture = Screen('MakeTexture', hScreen, thisImage);
+        Screen('DrawTexture', hScreen, thisImageScreenTexture);  % Draw texture image to backbuffer.
+        
+        % Load crosshair on top of image
+        ptbCrosshair(CrosshairParameters);
+        
+        % Wait for 't'
+        WaitParameters.isDebuggingRun = isDebuggingRun;
+        WaitParameters.isTimeZero = isTimeZero;
+        WaitParameters.timeZero = timeZero;
+        WaitParameters.cTrialDuration = cOnsetDelay;  % debugging mode: zero delay at this point
+        WaitOutput = ptbWaitForT(WaitParameters);
+        thisTrialOnset = WaitOutput.thisTrialOnset;
+
+        % Create KbQueue for responses
+        ptbKbQueueCreate(responseKeys)
+        KbQueueFlush(); % removes all keyboard presses
+        
+        % Display stimulus
+        [~, thisStimulusOnset] = Screen('Flip', hScreen);  
+        
+        % Get key response while stimulus is up 
+        [thisResponseKey, ~, ~] = ptbGetResponse(thisStimulusOnset, cStimulusDuration);
+
+        % Compute accuracy
+        thisTrialAccuracy = ptbResponseAccuracy(thisResponseKey, thisCondition, ResponseParameters);
+        
+        % Feedback
+        if giveFeedback
+            if strcmp(thisCondition, 'target')
+                if thisTrialAccuracy==1
+                    InstructionsParameters.instructions = 'Correct. That was a target trial.';
+                    InstructionsParameters.screenHandle = hScreen;
+                    InstructionsParameters.textColor = [0, 0, 255];
+                    ptbInstructions(InstructionsParameters);
+                    WaitSecs(2)
+                else
+                    InstructionsParameters.instructions = 'Incorrect. That was a target trial.';
+                    InstructionsParameters.screenHandle = hScreen;
+                    InstructionsParameters.textColor = [255, 0, 0];
+                    ptbInstructions(InstructionsParameters);
+                    WaitSecs(2)
+                end  % if thisTrialAccuracy==1
+            end  % if strcmp(thisCondition, 'target')
+        end  % if giveFeedback
+
+        % Display crosshair
+        Screen('Close');
+        ptbCrosshair(CrosshairParameters);
+        Screen('Flip', hScreen);
+
+        % Interstimulus interval (one 't')
+        IntervalParameters.thisTrialOnset = thisTrialOnset;
+        IntervalParameters.isDebuggingRun = isDebuggingRun;
+        IntervalParameters.isTimeZero = isTimeZero;
+        IntervalParameters.timeZero = timeZero;
+        IntervalParameters.cTrialDuration = cTrialDuration;  % used only in debugging mode
+        ptbInterStimulusInterval(IntervalParameters);
+
+    end  % if strcmp(thisCondition, 'null')
+    
+    Screen('Close');
+    
+end  % for iTrials = 1 : nTrials
+
+
+
+%%  End session
+
+EndRunParameters.screenHandle = hScreen;
+EndRunParameters.message = 'Great job!';
+EndRunParameters.textColor = WhiteIndex(hScreen);
+ptbEndRun(EndRunParameters)
+
+
+end  % function ptbTargetCategoryExperimentA_Training(subjectNumber, runNumber)
+
+##### SOURCE END #####
+--></body></html>

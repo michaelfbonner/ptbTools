@@ -6,7 +6,7 @@
    <!--
 This HTML was auto-generated from MATLAB code.
 To make changes, update the MATLAB code and republish this document.
-      --><title>ptbTargetCategoryExperimentA</title><meta name="generator" content="MATLAB 8.5"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2015-03-27"><meta name="DC.source" content="ptbTargetCategoryExperimentA.m"><style type="text/css">
+      --><title>ptbTargetCategoryExperimentA</title><meta name="generator" content="MATLAB 8.5"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2015-04-16"><meta name="DC.source" content="ptbTargetCategoryExperimentA.m"><style type="text/css">
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
 
 html { min-height:100%; margin-bottom:1px; }
@@ -197,7 +197,9 @@ subjectName = [<span class="string">'subj'</span> num2str(subjectNumber, <span c
 runName = [<span class="string">'run'</span> num2str(runNumber, <span class="string">'%03d'</span>)];
 
 <span class="comment">% Output data file</span>
-mkdirIF(directoryOutput);
+<span class="keyword">if</span> ~exist(directoryOutput, <span class="string">'dir'</span>);
+    mkdir(directoryOutput);
+<span class="keyword">end</span>
 ScanDataFileName = [subjectName runName <span class="string">'data.mat'</span>];
 ScanDataFullFile = fullfile(directoryOutput, ScanDataFileName);
 
@@ -221,7 +223,7 @@ timeZeroTrial = find(isTimeZeroValues);
 </pre><h2>Set experiment parameters<a name="9"></a></h2><pre class="codeinput"><span class="comment">% Make display transparent when debugging</span>
 <span class="keyword">if</span> isTransparentDisplay
     screenOpacity = 0.75;
-    PsychDebugWindowConfiguration(0, screenOpacity);  <span class="comment">% note that timestamping will be inaccurate in this mode</span>
+    PsychDebugWindowConfiguration(0, screenOpacity);  <span class="comment">% note that time-stamping will be inaccurate in this mode</span>
 <span class="keyword">end</span>
 
 <span class="comment">% Reseed the random-number generator</span>
@@ -229,10 +231,8 @@ rand(<span class="string">'state'</span>, sum(100 * clock));
 
 <span class="comment">% PsychToolbox settings</span>
 hScreen = ptbScreenSettings;  <span class="comment">% screen settings, including a standard gray background</span>
-Screen(<span class="string">'Preference'</span>, <span class="string">'SkipSyncTests'</span>, 1);  <span class="comment">% Override timing check</span>
 AssertOpenGL;  <span class="comment">% Check for OpenGL compatibility, abort otherwise</span>
 KbName(<span class="string">'UnifyKeyNames'</span>); <span class="comment">% Make sure keyboard mapping is the same on all supported operating systems: Apple MacOS/X, MS-Windows and GNU/Linux:</span>
-<span class="comment">% ListenChar(2);    % Uncomment this when the experiment is ready to run and has been debugged. This command prevents the key response from being sent to the Matlab screen.</span>
 
 <span class="comment">% Position for center of screen</span>
 screenSize = Screen(<span class="string">'Rect'</span>, hScreen);
@@ -285,7 +285,7 @@ ResponseData.accuracy = nan(nTrials, 1, <span class="string">'single'</span>);
 ResponseData.ReactionTime.raw = nan(nTrials, 1, <span class="string">'single'</span>);
 ResponseData.ReactionTime.relative = nan(nTrials, 1, <span class="string">'single'</span>);
 </pre><h2>Present stimuli<a name="12"></a></h2><pre class="codeinput">timeZero = [];
-<span class="keyword">for</span> iTrials = 1 : 5 <span class="comment">%nTrials</span>
+<span class="keyword">for</span> iTrials = 1 : nTrials
 
     <span class="comment">% Check for time-zero trial</span>
     isTimeZero = iTrials == timeZeroTrial;
@@ -344,6 +344,8 @@ ResponseData.ReactionTime.relative = nan(nTrials, 1, <span class="string">'singl
         <span class="comment">% Stimulus trials:</span>
         <span class="comment">% * startUp</span>
         <span class="comment">% * pathways</span>
+        <span class="comment">% * target</span>
+        <span class="comment">% * filler</span>
         <span class="comment">% * targetCarryover</span>
         <span class="comment">% * fillerCarryover</span>
         <span class="comment">% * nullCarryover</span>
@@ -382,6 +384,7 @@ ResponseData.ReactionTime.relative = nan(nTrials, 1, <span class="string">'singl
         thisTrialAccuracy = ptbResponseAccuracy(thisResponseKey, thisCondition, ResponseParameters);
 
         <span class="comment">% Display crosshair</span>
+        Screen(<span class="string">'Close'</span>);
         ptbCrosshair(CrosshairParameters);
         [~, thisStimulusOffset] = Screen(<span class="string">'Flip'</span>, hScreen);
 
@@ -703,7 +706,9 @@ subjectName = ['subj' num2str(subjectNumber, '%03d')];
 runName = ['run' num2str(runNumber, '%03d')];
 
 % Output data file
-mkdirIF(directoryOutput);
+if ~exist(directoryOutput, 'dir');
+    mkdir(directoryOutput);
+end
 ScanDataFileName = [subjectName runName 'data.mat'];
 ScanDataFullFile = fullfile(directoryOutput, ScanDataFileName);
 
@@ -747,7 +752,7 @@ timeZeroTrial = find(isTimeZeroValues);
 % Make display transparent when debugging
 if isTransparentDisplay
     screenOpacity = 0.75;
-    PsychDebugWindowConfiguration(0, screenOpacity);  % note that timestamping will be inaccurate in this mode
+    PsychDebugWindowConfiguration(0, screenOpacity);  % note that time-stamping will be inaccurate in this mode
 end
 
 % Reseed the random-number generator
@@ -755,10 +760,8 @@ rand('state', sum(100 * clock));
 
 % PsychToolbox settings
 hScreen = ptbScreenSettings;  % screen settings, including a standard gray background
-Screen('Preference', 'SkipSyncTests', 1);  % Override timing check
 AssertOpenGL;  % Check for OpenGL compatibility, abort otherwise
 KbName('UnifyKeyNames'); % Make sure keyboard mapping is the same on all supported operating systems: Apple MacOS/X, MS-Windows and GNU/Linux:
-% ListenChar(2);    % Uncomment this when the experiment is ready to run and has been debugged. This command prevents the key response from being sent to the Matlab screen.
 
 % Position for center of screen
 screenSize = Screen('Rect', hScreen); 
@@ -831,7 +834,7 @@ ResponseData.ReactionTime.relative = nan(nTrials, 1, 'single');
 %% Present stimuli
 
 timeZero = [];
-for iTrials = 1 : 5 %nTrials
+for iTrials = 1 : nTrials
 
     % Check for time-zero trial
     isTimeZero = iTrials == timeZeroTrial;
@@ -890,6 +893,8 @@ for iTrials = 1 : 5 %nTrials
         % Stimulus trials: 
         % * startUp
         % * pathways
+        % * target
+        % * filler
         % * targetCarryover
         % * fillerCarryover
         % * nullCarryover
@@ -928,6 +933,7 @@ for iTrials = 1 : 5 %nTrials
         thisTrialAccuracy = ptbResponseAccuracy(thisResponseKey, thisCondition, ResponseParameters);
 
         % Display crosshair
+        Screen('Close');
         ptbCrosshair(CrosshairParameters);
         [~, thisStimulusOffset] = Screen('Flip', hScreen);
 

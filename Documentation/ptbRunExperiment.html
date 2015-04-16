@@ -6,7 +6,7 @@
    <!--
 This HTML was auto-generated from MATLAB code.
 To make changes, update the MATLAB code and republish this document.
-      --><title>ptbRunExperiment</title><meta name="generator" content="MATLAB 8.5"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2015-03-27"><meta name="DC.source" content="ptbRunExperiment.m"><style type="text/css">
+      --><title>ptbRunExperiment</title><meta name="generator" content="MATLAB 8.5"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2015-04-16"><meta name="DC.source" content="ptbRunExperiment.m"><style type="text/css">
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
 
 html { min-height:100%; margin-bottom:1px; }
@@ -100,14 +100,15 @@ clc
 subjectNumber = input(<span class="string">'Subject number?: '</span>);
 subjectName = [<span class="string">'subj'</span> num2str(subjectNumber, <span class="string">'%03d'</span>)];
 </pre><h2>Check if any sessions have already been run for this subject<a name="8"></a></h2><p>Load the RunLogFullFile, which loads the RunLog structure: * RunLog.(subjectName).Runs(runNumber).complete</p><pre class="codeinput"><span class="comment">% Log file</span>
-RunLogFile = <span class="string">'RunLog.mat'</span>;
+RunLogFile = [subjectName <span class="string">'RunLog.mat'</span>];
 RunLogFullFile = fullfile(directoryOutput, RunLogFile);
 
 <span class="comment">% Load RunLog and calculate startRun</span>
 <span class="keyword">if</span> exist(RunLogFullFile, <span class="string">'file'</span>)
     load(RunLogFullFile);
-    nRunsComplete = length(RunLog.(subjectName).Runs);
+    nRunsComplete = length(RunLog);
 <span class="keyword">else</span>
+    RunLog = struct();
     nRunsComplete = 0;
 <span class="keyword">end</span>
 startRun = nRunsComplete + 1;
@@ -135,7 +136,7 @@ isStartRunCorrect = strcmp(<span class="string">'y'</span>, startRunResponse);
     <span class="keyword">end</span>
 
     <span class="comment">% Update RunLog</span>
-    RunLog.(subjectName).Runs(iRuns).complete = true;
+    RunLog(iRuns).complete = true;
 
     <span class="comment">% Prompt to start next experiment</span>
     <span class="keyword">if</span> iRuns &lt; nRuns
@@ -244,14 +245,15 @@ subjectName = ['subj' num2str(subjectNumber, '%03d')];
 % * RunLog.(subjectName).Runs(runNumber).complete
 
 % Log file
-RunLogFile = 'RunLog.mat';
+RunLogFile = [subjectName 'RunLog.mat'];
 RunLogFullFile = fullfile(directoryOutput, RunLogFile);
 
 % Load RunLog and calculate startRun
 if exist(RunLogFullFile, 'file')
     load(RunLogFullFile);
-    nRunsComplete = length(RunLog.(subjectName).Runs);
+    nRunsComplete = length(RunLog);
 else
+    RunLog = struct();
     nRunsComplete = 0;
 end
 startRun = nRunsComplete + 1;
@@ -290,7 +292,7 @@ for iRuns = startRun : nRuns
     end
     
     % Update RunLog
-    RunLog.(subjectName).Runs(iRuns).complete = true;
+    RunLog(iRuns).complete = true;
     
     % Prompt to start next experiment
     if iRuns < nRuns
